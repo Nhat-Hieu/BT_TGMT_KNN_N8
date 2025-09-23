@@ -1,11 +1,30 @@
-# Hướng Dẫn Làm Việc Với Hai Repo
+# 📘 Git Workflow Guide (Làm việc với nhánh riêng)
 
-Tài liệu này hướng dẫn cách làm việc với hai repository:
+## 0. Thiết Lập Ban Đầu
 
-- Repo gốc (upstream): **Nhat-Hieu/BT_TGMT_KNN_N8**
-- Repo cá nhân (origin): **MinhKhanh-EternAI/rps-opencv-knn**
+### 0.1. Clone repo gốc (Nhat-Hieu)
+```bash
+git clone https://github.com/Nhat-Hieu/BT_TGMT_KNN_N8.git
+cd BT_TGMT_KNN_N8
+```
 
-Bạn đã được thêm quyền *collaborator* trên repo gốc, vì vậy có thể push và tạo nhánh trực tiếp.
+### 0.2. Thêm remote cho repo cá nhân
+```bash
+git remote rename origin Nhat-Hieu
+git remote add origin https://github.com/MinhKhanh-EternAI/rps-opencv-knn.git
+```
+
+Kiểm tra lại remote:
+```bash
+git remote -v
+```
+👉 Kết quả mong đợi:
+```
+origin    https://github.com/MinhKhanh-EternAI/rps-opencv-knn.git (fetch)
+origin    https://github.com/MinhKhanh-EternAI/rps-opencv-knn.git (push)
+Nhat-Hieu https://github.com/Nhat-Hieu/BT_TGMT_KNN_N8.git (fetch)
+Nhat-Hieu https://github.com/Nhat-Hieu/BT_TGMT_KNN_N8.git (push)
+```
 
 ---
 
@@ -78,3 +97,53 @@ Sau khi đã push nhánh (ví dụ: `khanhnvm`) lên GitHub:
 👉 Vì bạn có quyền collaborator trên repo `Nhat-Hieu`, bạn có thể mở PR trực tiếp và merge vào `main` của repo đó.
 
 ---
+
+## 5. Các Lệnh Git Hữu Ích Khác
+
+- **Xem trạng thái**
+  ```bash
+  git status
+  ```
+- **Xem log commit**
+  ```bash
+  git log --oneline --graph --all
+  ```
+- **Chuyển đổi branch**
+  ```bash
+  git checkout branch-name
+  ```
+- **Tạo branch mới từ branch hiện tại**
+  ```bash
+  git checkout -b new-feature
+  ```
+- **Xóa branch**
+  ```bash
+  git branch -d branch-name       # xóa local
+  git push origin --delete branch-name   # xóa trên remote
+  ```
+- **Hủy thay đổi chưa commit**
+  ```bash
+  git restore file.txt
+  ```
+- **Sửa commit gần nhất (chưa push)**
+  ```bash
+  git commit --amend -m "message mới"
+  ```
+- **Khôi phục file từ branch khác**
+  ```bash
+  git checkout main -- path/to/file.py
+  ```
+
+---
+
+## 6. Workflow Tóm Tắt
+
+1. `git clone https://github.com/Nhat-Hieu/BT_TGMT_KNN_N8.git`  
+2. `git remote rename origin Nhat-Hieu`  
+3. `git remote add origin https://github.com/MinhKhanh-EternAI/rps-opencv-knn.git`  
+4. `git checkout main`  
+5. `git pull Nhat-Hieu main`  
+6. `git checkout -b khanhnvm main`  
+7. Code → `git add .` → `git commit -m "..."`  
+8. `git push origin khanhnvm`  
+9. Mở PR trên GitHub và merge.  
