@@ -41,10 +41,8 @@ dataset/
    python run.py
    ```
 
-## Hiệu suất mô hình
-- **Độ chính xác**: 95.2%
+## Thông số mô hình
 - **Đặc trưng**: HOG + PCA
-- **K tối ưu**: 5 (cross-validation)
 - **Thời gian thực**: 30+ FPS
 
 ## Tính năng chính
