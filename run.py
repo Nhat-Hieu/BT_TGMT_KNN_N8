@@ -33,7 +33,7 @@ def predict_from_frame(frame, img_size=(64, 64)):
 
 
 # --- Mở webcam ---
-cap = cv2.VideoCapture(0)   # đổi 0 hoặc 1 tùy máy
+cap = cv2.VideoCapture(1)   # đổi 0 hoặc 1 tùy máy
 while True:
     ret, frame = cap.read()
     if not ret:
